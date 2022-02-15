@@ -21,7 +21,7 @@ Scripts to generate array jobs.
 Project root | raw | sample | .fastq.gz
 --- | --- | --- | ---
 SCC_Trial | FASTQ_Raw | 1 | 1_L001_R1.fastq.gz
-|  |  | 1 | 1_L001_R2.fastq.gz
+|  |  |  | 1_L001_R2.fastq.gz
 | |  |  | 1_L002_R1.fastq.gz
 |  |  |  | 1_L002_R2.fastq.gz
 | |  | 2 | 2_L001_R1.fastq.gz
