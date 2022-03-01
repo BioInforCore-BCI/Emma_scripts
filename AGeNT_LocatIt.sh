@@ -65,6 +65,15 @@ echo '
 
 DIR=/data/BCI-DigitalPath/Elements/nourse/CNourse_Trial
 
+## Get all the sample names from FASTQ_Trim
+Samples=(ls FASTQ_Trim/*)
+
+## Extract the file name at the position of the array job task ID
+Sample=$(basename ${Samples[${SGE_TASK_ID}]})
+
+#Move into sample directory
+cd FASTQ_Trim/$Sample
+
 module load java
 
 #Extract file name for bam file
@@ -75,6 +84,8 @@ BED=/data/BCI-DigitalPath/Elements/nourse/CNourse_Trial/SCC009_1_Covered.bed
 
 #Get output name
 OUTPUT=$(basename $BAM | sed -r 's/.bam/_locatIt.bam/g')
+
+echo "Running LocatIt using $BAM and $BED. Saving to $OUTPUT"
 
 java -Xmx12G -jar /data/home/hfy041/AGeNT_2.0.5/agent/lib/locatit-2.0.5.jar -S -IB -v2Duplex -l $BED -o $OUTPUT $BAM
 
