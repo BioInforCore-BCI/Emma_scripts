@@ -15,7 +15,24 @@ Scripts to generate array jobs.
 
 1. [FASTQC.sh](#fastqcsh)
 
+1. [Coverage_boxplots.r](#coverage_boxplotsr)
+
 ***
+
+```mermaid
+flowchart TD;
+subgraph AGeNT Pipeline
+    A(AGeNT_Trimmer.sh)==>B(BWA_aligner.sh);
+    B==>C(AGeNT_LocatIt.sh);
+    C==>D(Variant_calling);
+end
+    C-.->F[Coverage_boxplots.r];
+    A-.->E[FASTQC.sh];
+
+
+```
+
+
 
 ## AGeNT Pipeline:
 
@@ -61,4 +78,9 @@ SCC_Trial | FASTQ_Raw | 1 | 1_L001_R1.fastq.gz
 
 #### FASTQC.sh
 
--Runs FastQC on trimmed reads (R1/R2 files) produced using AGeNT_trimmer.sh. 
+- Runs FastQC on trimmed reads (R1/R2 files) produced using AGeNT_trimmer.sh. 
+
+#### Coverage_boxplots.r
+
+- For each sample, produces boxplots showing coverage for each target probe. 
+- Uses output from AGeNT_LocatIt.sh
