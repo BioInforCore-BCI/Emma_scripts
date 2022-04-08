@@ -99,6 +99,7 @@ fi
  
 if ! [[ -s N ]]; then
 	echo "No somatic file found, run HaplotypeCaller instead."
+    exit 1
 fi
 
 
