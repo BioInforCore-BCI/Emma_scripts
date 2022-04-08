@@ -91,9 +91,10 @@ echo "Running Mutect2 for sample: $Patient"
 cd /data/BCI-DigitalPath/Elements/nourse/CNourse_Trial/Patients/$Patient
 
 if ! [[ -s N ]] && ! [[ -s T ]] && ! [[ -s M ]]; then
-  echo "Before running script, generate a directory called `Patients` with a subdirectory for each patient (i.e. Patients/SH03). 
-  Then depending on what data is available for each patient add further subdirectories called `M`, `T` and `N` for Metastatic, Tumour and Normal.
-  A detailed explanation is included at beginning of this script."
+  	echo "Before running script, generate a directory called `Patients` with a subdirectory for each patient (i.e. Patients/SH03). 
+  	Then depending on what data is available for each patient add further subdirectories called `M`, `T` and `N` for Metastatic, Tumour and Normal.
+  	A detailed explanation is included at beginning of this script."
+    exit 1
 fi
  
 if ! [[ -s N ]]; then
