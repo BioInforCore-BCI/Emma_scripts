@@ -96,7 +96,7 @@ if ! [[ -s N ]] && ! [[ -s T ]] && ! [[ -s M ]]; then
   A detailed explanation is included at beginning of this script."
 fi
  
- if ! [[ -s N ]]; then
+if ! [[ -s N ]]; then
 	echo "No somatic file found, run HaplotypeCaller instead."
 fi
 
