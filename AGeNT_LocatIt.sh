@@ -54,7 +54,7 @@ echo "
 #$ -m a			# Email on abort
 #$ -pe smp 1		# Request 1 CPU cores
 #$ -l h_rt=240:0:0	# Request 72 hour runtime
-#$ -l h_vmem=12G		# Request 12G RAM / Core
+#$ -l h_vmem=20G	# Request 12G RAM / Core
 #$ -t 1-$MAX		# run an array job of all the samples listed in FASTQ_Trim
 #$ -N $jobName-LocatIt
 
@@ -88,7 +88,7 @@ OUTPUT=$(basename ${BAM} | sed -r s/.bam/_locatIt_filtered.bam/g)
 echo "Running LocatIt using $BAM and $BED. Saving to $OUTPUT"
 
 #Run LocatIt. All secondary, supplementary and duplicate reads are filtered out in the output
-java -Xmx100g -jar /data/home/hfy041/AGeNT_2.0.5/agent/lib/locatit-2.0.5.jar -S -R -IB -v2Duplex -l $BED -o $OUTPUT $BAM
+java -Xmx12g -jar /data/home/hfy041/AGeNT_2.0.5/agent/lib/locatit-2.0.5.jar -S -R -IB -v2Duplex -l $BED -o $OUTPUT $BAM
 
 	
 echo "Job complete"
