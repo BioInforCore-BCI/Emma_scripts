@@ -83,11 +83,12 @@ BAM=$(find -name "*.bam")
 BED=/data/BCI-DigitalPath/Elements/nourse/CNourse_Trial/SCC009_1_Covered.bed                      
 
 #Get output name
-OUTPUT=$(basename $BAM | sed -r 's/.bam/_locatIt.bam/g')
+OUTPUT=$(basename ${BAM} | sed -r s/.bam/_locatIt_filtered.bam/g)
 
 echo "Running LocatIt using $BAM and $BED. Saving to $OUTPUT"
 
-java -Xmx12G -jar /data/home/hfy041/AGeNT_2.0.5/agent/lib/locatit-2.0.5.jar -S -IB -v2Duplex -l $BED -o $OUTPUT $BAM
+#Run LocatIt. All secondary, supplementary and duplicate reads are filtered out in the output
+java -Xmx100g -jar /data/home/hfy041/AGeNT_2.0.5/agent/lib/locatit-2.0.5.jar -S -R -IB -v2Duplex -l $BED -o $OUTPUT $BAM
 
 	
 echo "Job complete"
